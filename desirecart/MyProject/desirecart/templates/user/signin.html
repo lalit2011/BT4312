@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Sign-Up</title>
+    {% endblock %}
+{% block content %}
+{% load static %}
+
+<script>
+    $(document).ready(function(){
+     $("#btnmodal").click();
+     $("#exampleModal").on('hidden.bs.modal',function(){
+        window.close();
+     });
+    });
+</script>
+
+<!-- Button trigger modal -->
+<button id="btnmodal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="exampleModalLabel">SIGN IN HERE</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+                    {% if User %}
+                    <div class="alert alert-success">You Logged In Successfully. Close to continue.</div>
+                    {% endif %}
+
+                    {% if Nouser %}
+                    <div class="alert alert-danger">Credentials Failed. Please register First or try again.</div>
+                    {% endif %}                </div><br/>
+            <form class="form" method="post" action="/user/signin1/">
+					{% csrf_token %}
+        <input type="text" name="uname" placeholder="Type your user name.." class="form-control"/><br/>
+          <input type="text" name="password" placeholder="Type your password here.." class="form-control"/>
+          <br/>
+          <input type="submit" value="LOGIN NOW" class="btn btn-info">
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

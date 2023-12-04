@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    {% endblock %}
+    <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.css'%}" rel="stylesheet">
+    <script src="{% static 'js/jquery.js'%}"></script>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    <style>
+        .t{
+        min-height:40px;
+        text-align:center;
+        }
+        .social .fa{
+        margin-left:12px;
+        font-size:18px;
+        height:25px;
+        width:25px;
+        border-radius:5px;
+        padding-top:2.5px;
+        }
+        .social .fa:hover{
+        background:orange;
+        color:white;
+        transition:all ease 0.5s;
+        }
+        .logog{
+        font-size:28px;
+        }
+        .txt{
+        height:60px;
+        }
+        .c{
+        margin-right:3%;
+        }
+        .menu{
+        min-height:50px;
+        background:black;
+        }
+        .slider h4{
+        color:orange;
+        font-size:35px
+        }
+        .slider p{
+        color:orange;
+        }
+        .cat{
+        min-height:300px
+        }
+
+        .mens{
+        background:url('{% static "images/banner-1.jpg"%}');
+        min-height:250px;
+        }
+        .womens{
+        background:url('{% static "images/banner-2.jpg"%}');
+        min-height:250px;
+        }
+        .kids{
+        background:url('{% static "images/banner-3.jpg"%}');
+        min-height:250px;
+        }
+        .mens h5, .womens h5, .kids h5{
+        height:45px;
+        width:100px;
+        background:white;
+        text-align:center;
+        padding-top:2%;
+        margin:30% auto
+        }
+        #menu li a{
+        color:white;
+        }
+        #menu li a:hover{
+        color:orange;
+        transition:all ease 0.5s;
+        }
+        .products{
+        min-height:300px;
+        background:#f8f9f1;
+        }
+        .btno{
+        border:none;
+        background:orange;
+        color:white;
+        text-decoration:none;
+        text-align:center;
+        border-radius:3px;
+        font-size:14px;
+        }
+        .service{
+        min-height:200px;
+        background:#f8f9f1;
+        }
+        .ufooter{
+        min-height:300px;
+        border-bottom:1px solid #f8f9f1;
+        }
+        .bfooter{
+        min-height:50px;
+        }
+
+        .fsocial .fa:hover{
+        background:orange;
+        transition:all ease 0.5s;
+        }
+        .fsocial span{
+            height:40px;
+            width:40px;
+            color:white;
+            line-height:40px;
+            margin-left:5px;
+            background:silver;
+            text-align:center;
+            border-radius:50%;
+            font-size:21px;
+        }
+.nikkuac:hover{
+text-decoration:none;
+color:orange;
+}
+.nikkuac{
+text-decoration:none;
+color:silver;
+}
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row t border-top border-bottom py-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 border-left border-right">
+                    {% if user.is_authenticated %}
+                    <span class="fa fa-envelope"> {{request.user}}</span>
+                <a href="/user/logout/"> <span class="fa fa-sign-out" hint="Sign Out"></span></a>
+                    {% else %}
+                    <a href="/user/signin" style="text-decoration:none;color:black" target="_blank">Click To Sign In</a>
+                    {% endif %}
+                </div>
+                <div class="col-sm-4 ">
+                    <span class="fa fa-phone"> +91 9068397109</span>
+                </div>
+                <div class="col-sm-4 border-left border-right social">
+                    <span class="fa fa-facebook"></span>
+                    <span class="fa fa-twitter-square"></span>
+                    <span class="fa fa-instagram"></span>
+                    <span class="fa fa-youtube"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row header py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 logog">
+                    <span>FASH<b style="color:orange;">ION<span class="fa fa-shopping-cart"></span> </b></span>
+                </div>
+                <div class="col-sm-6">
+                <div class="input-group mb-3">
+  <input type="text" class="form-control rounded-0 txt" placeholder="What do you need?" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <div class="input-group-append" >
+      <span class="input-group-text rounded-0 pl-3" style="background:orange;color:white;width:50px;" id="basic-addon2"><span class="fa fa-search"></span></span>
+  </div>
+</div>
+                </div>
+                <div class="col-sm-3 my-3 text-right">
+                    <span class="fa fa-heart c"></span>
+                    <span class="fa fa-shopping-cart c"></span>
+                    <span class="fa fa-inr"></span> 500/-
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row menu bg-dark">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light" >
+  <a class="navbar-brand" href="#" style="color:orange">WOW Insite</a>
+  <button class="navbar-toggler" type="button" style="background:white;" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mx-auto " id="menu">
+      <li class="nav-item active">
+        <a class="nav-link" href="/user/index/"><span class="fa fa-home"></span> HOME <span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="fa fa-product-hunt"></span> PRODUCT
+        </a>
+        <div  class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/user/mensproduct/">MEN'S</a>
+          <a class="dropdown-item" href="/user/womensproduct/">WOMEN'S</a>
+
+          <a class="dropdown-item" href="/user/kidsproduct/">KID'S</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/user/orders/"><span class="fa fa-shopping-cart"></span> MY ORDERS</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/user/profile/"><span class="fa fa-user"></span> MY PROFILE</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/user/contact/"><span class="fa fa-phone"></span> CUSTOMER SUPPORT</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/user/feedback/"><span class="fa fa-comments"></span> FEEDBACK</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="/user/register/"><span class="fa fa-user"></span> SIGN-UP</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/admin/"><span class="fa fa-key"></span> SIGN-IN</a>
+      </li>
+
+
+    </ul>
+
+  </div>
+</nav>
+    </div>
+    </div>
+
+
+    <div class="row main">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+
+     <div class="row ufooter bg-dark">
+        <div class="container  p-5">
+            <div class="row ">
+                <div class="col-sm-4">
+                    <span style="color:white;font-size:25px;">FASH<b style="color:orange;">ION <span class="fa fa-shopping-cart"></span> </b></span>
+                    <br>
+                    <br>
+                    <p style="color:silver;">Address: Aligarh,UP,India,202001</p>
+                    <p style="color:silver;">Phone: 9068397109</p>
+                    <p style="color:silver;">E-mail: lalit36092@gmail.com</p>
+                    <div class="row">
+                    <div class="col-sm-12 fsocial">
+                        <a href="#"><span  class="fa fa-facebook"></span></a>
+                        <a href="#"><span class="fa fa-twitter-square"></span></a>
+                        <a href="#"><span class="fa fa-instagram"></span></a>
+                        <a href="#"><span class="fa fa-youtube"></span></a>
+
+
+
+
+                </div>
+                </div>
+                </div>
+                <div class="col-sm-2">
+                    <p style="color:white;font-size:20px;">Information</p>
+                    <p><a class="nikkuac" href="#" >About Us</a></p>
+                    <p><a class="nikkuac" href="#" >Checkout</a></p>
+                    <p><a class="nikkuac" href="#" >Contact</a></p>
+                    <p><a class="nikkuac" href="#" >Services</a></p>
+                </div>
+                <div class="col-sm-2">
+                    <p style="color:white;font-size:20px;">My Account</p>
+                    <p><a class="nikkuac" href="#" >My Account</a></p>
+                    <p><a class="nikkuac"href="#" >Contact</a></p>
+                    <p><a class="nikkuac"href="#" >Shopping Cart</a></p>
+                    <p><a class="nikkuac"href="#" >Shop</a></p>
+                </div>
+                <div class="col-sm-4">
+                    <p style="color:white;font-size:20px;">Join Our Newsletter Now</p>
+                    <p style="color:silver;">Get E-mail updates about our latest shop and special offers.</p>
+                    <div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Enter Your Mail" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="input-group-text border-0" style="background:orange;color:white;" id="basic-addon2">SUBSCRIBE</button>
+  </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row bfooter bg-dark">
+         <div class="container text-center my-2">
+             <span class="text-white "> &copy; Copyright 2023 All rights reserved | Designed by- BTCS4312</span>
+         </div>
+
+    </div>
+</div>
+</body>
+</html>
